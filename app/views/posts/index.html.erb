@@ -1,0 +1,27 @@
+<% if current_user %>
+  <p><%= "Logged in as #{@user.name}." %></p>
+<% end %>
+<h1>Let's Talk Sh*t</h1>
+<%= link_to "Create post",  new_post_path%><br>
+<% if current_user %>
+  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to "Log in", new_user_session_path %>
+<% end %><br><br>
+
+
+<% @posts.each do |post| %>
+
+  <div>
+      <% if current_user %>
+        <h4><%= post.user.name %></h3>
+      <% else %>
+        <h4><%= "Anonymous" %></h4>
+      <% end %>
+
+      <p><%= post.body %></p><br>
+  </div>
+
+<% end %>
+
+

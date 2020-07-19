@@ -1,0 +1,12 @@
+<%= form_with model: @post do |f| %>
+  <ul>
+    <% @post.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+
+  <%= f.text_area :body, size: "50x10" %><br>
+
+  <%= f.submit %>
+
+<% end %>
